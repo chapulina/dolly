@@ -1,0 +1,16 @@
+material Dolly/fur
+        {
+          receive_shadows off
+          technique
+          {
+            pass
+            {
+              texture_unit
+              {
+                texture sheep.jpg
+                filtering anistropic
+                max_anisotropy 16
+              }
+            }
+          }
+        }
