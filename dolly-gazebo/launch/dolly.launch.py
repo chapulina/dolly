@@ -17,6 +17,7 @@
 from launch import LaunchDescription
 import launch.actions
 import launch.substitutions
+import launch_ros.actions
 
 def generate_launch_description():
     gzserver_exe = launch.actions.ExecuteProcess(
@@ -28,6 +29,15 @@ def generate_launch_description():
         cmd=['gzclient'],
         output='screen'
     )
+    follow = launch_ros.actions.Node(
+        package='dolly-follow',
+        node_executable='dolly-follow',
+        output='screen',
+        remappings=[
+            ('cmd_vel', '/dolly/cmd_vel'),
+            ('laser_scan', '/dolly/laser_scan')
+        ]
+    )
 
     return LaunchDescription([
         launch.actions.DeclareLaunchArgument(
@@ -35,5 +45,6 @@ def generate_launch_description():
           default_value=['worlds/empty.world', ''],
           description='Gazebo world file'),
         gzserver_exe,
-        gzclient_exe
+        gzclient_exe,
+        follow
     ])
