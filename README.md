@@ -14,10 +14,9 @@ Dolly needs Gazebo 9 + ROS 2 Crystal. Tested on Ubuntu Bionic.
         cd ~/ws/src
         git clone https://github.com/chapulina/dolly
 
-1. Install ROS dependencies like `gazebo_ros_pkgs`, which also installs Gazebo:
+1. Install `gazebo_ros_pkgs`, which also installs Gazebo:
 
-        cd ~/ws
-        rosdep install --from-paths src --ignore-src -r -y
+        sudo apt install ros-crystal-gazebo-ros-pkgs
 
 1. Build and install:
 
@@ -26,15 +25,20 @@ Dolly needs Gazebo 9 + ROS 2 Crystal. Tested on Ubuntu Bionic.
 
 ## Run
 
-1. Setup environment variables:
+1. Setup environment variables (the order is important):
 
+        . /usr/share/gazebo/setup.sh
         . ~/ws/install/setup.bash
-        export GAZEBO_RESOURCE_PATH=/home/`whoami`/ws/src/dolly/dolly-gazebo/worlds:${GAZEBO_RESOURCE_PATH}
-        export GAZEBO_MODEL_PATH=/home/`whoami`/ws/src/dolly/dolly-gazebo/models:${GAZEBO_MODEL_PATH}
+        export GAZEBO_RESOURCE_PATH=/home/`whoami`/ws/src/dolly/dolly_gazebo/worlds:${GAZEBO_RESOURCE_PATH}
+        export GAZEBO_MODEL_PATH=/home/`whoami`/ws/src/dolly/dolly_gazebo/models:${GAZEBO_MODEL_PATH}
 
-1. Launch Dolly's world:
+1. Launch Dolly in a city (this will take some time to download models):
 
-        ros2 launch dolly-gazebo dolly.launch.py world:=dolly.world
+        ros2 launch dolly_gazebo dolly.launch.py world:=dolly_city.world
+
+1. Launch Dolly in an empty world:
+
+        ros2 launch dolly_gazebo dolly.launch.py world:=dolly_empty.world
 
 ## Packages
 
