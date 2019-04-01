@@ -234,7 +234,7 @@
     </link>
 
     <link name='tail'>
-      <pose>-0.52 0 0 -0.344828 0 0</pose>
+      <pose>-0.52 0 0 -1.6 0 0</pose>
       <inertial>
         <mass>0.0254232</mass>
         <inertia>
