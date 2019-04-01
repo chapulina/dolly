@@ -1,6 +1,10 @@
 # Dolly the robot
 
+_It's a sheep, it's a dolly, it's a robot. Clone Dolly now!_
+
 Packages for launching Dolly demo, which uses Gazebo and ROS 2.
+
+![Dolly city](dolly.gif)
 
 ## Install
 
