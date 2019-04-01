@@ -1,6 +1,6 @@
 # Dolly the robot
 
-_It's a sheep, it's a dolly, it's a robot. Clone Dolly now!_
+_It's a sheep, it's a dolly, it's a following robot. Clone Dolly now!_
 
 Packages for launching Dolly demo, which uses Gazebo and ROS 2.
 
@@ -12,15 +12,15 @@ Dolly needs Gazebo 9 + ROS 2 Crystal. Tested on Ubuntu Bionic.
 
 1. Install ROS Crystal as instructed [here](https://index.ros.org/doc/ros2/Installation/Linux-Install-Debians/).
 
+1. Install `gazebo_ros_pkgs`, which also installs Gazebo:
+
+        sudo apt install ros-crystal-gazebo-ros-pkgs
+
 1. Clone Dolly:
 
         mkdir -p ~/ws/src
         cd ~/ws/src
         git clone https://github.com/chapulina/dolly
-
-1. Install `gazebo_ros_pkgs`, which also installs Gazebo:
-
-        sudo apt install ros-crystal-gazebo-ros-pkgs
 
 1. Build and install:
 
