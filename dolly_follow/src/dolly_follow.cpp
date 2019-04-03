@@ -14,8 +14,8 @@
 
 #include <memory>
 
-#include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
+#include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/laser_scan.hpp>
 
 class Follow : public rclcpp::Node
@@ -41,7 +41,7 @@ private:
     // Find closest hit
     float min_range = _msg->range_max + 1;
     int idx = -1;
-    for (int i = 0; i < _msg->ranges.size(); ++i)
+    for (auto i = 0u; i < _msg->ranges.size(); ++i)
     {
       auto range = _msg->ranges[i];
       if (range > _msg->range_min && range < _msg->range_max && range < min_range)
