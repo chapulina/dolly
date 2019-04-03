@@ -6,9 +6,14 @@ Packages for launching Dolly demo, which uses Gazebo and ROS 2.
 
 ![Dolly city](dolly.gif)
 
+Dolly has been tested on:
+
+* ROS Crystal and upcoming ROS Dashing (as of 2019-04-03)
+* Ubuntu Bionic and OSX Sierra
+
 ## Install
 
-Dolly needs Gazebo 9 + ROS 2 Crystal. Tested on Ubuntu Bionic.
+Install instructions for ROS Crystal + Ubuntu Bionic.
 
 1. Install ROS Crystal as instructed [here](https://index.ros.org/doc/ros2/Installation/Linux-Install-Debians/).
 
