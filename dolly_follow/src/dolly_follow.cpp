@@ -25,12 +25,14 @@ public:
   /// velocity commands.
   explicit Follow() : Node("follow")
   {
+    auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     // Subscribe to sensor messages
     laser_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
-        "laser_scan", std::bind(&Follow::OnSensorMsg, this, std::placeholders::_1));
+        "laser_scan", default_qos,
+        std::bind(&Follow::OnSensorMsg, this, std::placeholders::_1));
 
     // Advertise velocity commands
-    cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel");
+    cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", default_qos);
   }
 
 private:
@@ -55,7 +57,7 @@ private:
     double turn = _msg->angle_min + _msg->angle_increment * idx;
 
     // Populate command message, all weights have been calculated by trial and error
-    auto cmd_msg = std::make_shared<geometry_msgs::msg::Twist>();
+    auto cmd_msg = std::make_unique<geometry_msgs::msg::Twist>();
 
     // Bad readings, stop
     if (idx < 0)
@@ -75,7 +77,7 @@ private:
       cmd_msg->angular.z = turn * angular_k_;
     }
 
-    cmd_pub_->publish(cmd_msg);
+    cmd_pub_->publish(std::move(cmd_msg));
   }
 
   /// \brief Laser messages subscriber
