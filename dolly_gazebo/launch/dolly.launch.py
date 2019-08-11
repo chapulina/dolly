@@ -14,21 +14,25 @@
 
 """Launch Gazebo with a world that has Dolly, as well as the follow node."""
 
+import os
+
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 import launch.actions
 import launch.substitutions
 import launch_ros.actions
 
 def generate_launch_description():
-    gzserver_exe = launch.actions.ExecuteProcess(
-        cmd=['gzserver', '--verbose', '-s', 'libgazebo_ros_init.so',
-             launch.substitutions.LaunchConfiguration('world')],
-        output='screen'
+    # Gazebo launch
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py'),
+        )
     )
-    gzclient_exe = launch.actions.ExecuteProcess(
-        cmd=['gzclient'],
-        output='screen'
-    )
+
+    # Follow node
     follow = launch_ros.actions.Node(
         package='dolly_follow',
         node_executable='dolly_follow',
@@ -44,7 +48,6 @@ def generate_launch_description():
           'world',
           default_value=['worlds/empty.world', ''],
           description='Gazebo world file'),
-        gzserver_exe,
-        gzclient_exe,
+        gazebo,
         follow
     ])
