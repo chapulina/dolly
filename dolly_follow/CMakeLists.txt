@@ -24,6 +24,11 @@ ament_target_dependencies(${target}
   "geometry_msgs"
   "sensor_msgs")
 
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
 install(TARGETS ${target}
   DESTINATION lib/${PROJECT_NAME})
 

@@ -18,22 +18,28 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
+from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-import launch.actions
-import launch.substitutions
-import launch_ros.actions
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
+
 
 def generate_launch_description():
+
+    pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
+    pkg_dolly_gazebo = get_package_share_directory('dolly_gazebo')
+
     # Gazebo launch
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py'),
+            os.path.join(pkg_gazebo_ros, 'launch', 'gazebo.launch.py'),
         )
     )
 
     # Follow node
-    follow = launch_ros.actions.Node(
+    follow = Node(
         package='dolly_follow',
         node_executable='dolly_follow',
         output='screen',
@@ -43,11 +49,22 @@ def generate_launch_description():
         ]
     )
 
+    # RViz
+    rviz = Node(
+        package='rviz2',
+        node_executable='rviz2',
+        arguments=['-d', os.path.join(pkg_dolly_gazebo, 'rviz', 'dolly_gazebo.rviz')],
+        condition=IfCondition(LaunchConfiguration('rviz'))
+    )
+
     return LaunchDescription([
-        launch.actions.DeclareLaunchArgument(
+        DeclareLaunchArgument(
           'world',
-          default_value=['worlds/empty.world', ''],
-          description='Gazebo world file'),
+          default_value=[os.path.join(pkg_dolly_gazebo, 'worlds', 'dolly_empty.world'), ''],
+          description='SDF world file'),
+        DeclareLaunchArgument('rviz', default_value='true',
+                              description='Open RViz.'),
         gazebo,
-        follow
+        follow,
+        rviz
     ])

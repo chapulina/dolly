@@ -12,24 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <memory>
-
 #include <geometry_msgs/msg/twist.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/laser_scan.hpp>
+
+#include <memory>
+#include <utility>
 
 class Follow : public rclcpp::Node
 {
 public:
   /// \brief Follow node, which subscribes to laser scan messages and publishes
   /// velocity commands.
-  explicit Follow() : Node("follow")
+  Follow()
+  : Node("follow")
   {
     auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     // Subscribe to sensor messages
     laser_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
-        "laser_scan", default_qos,
-        std::bind(&Follow::OnSensorMsg, this, std::placeholders::_1));
+      "laser_scan", default_qos,
+      std::bind(&Follow::OnSensorMsg, this, std::placeholders::_1));
 
     // Advertise velocity commands
     cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", default_qos);
@@ -43,11 +45,9 @@ private:
     // Find closest hit
     float min_range = _msg->range_max + 1;
     int idx = -1;
-    for (auto i = 0u; i < _msg->ranges.size(); ++i)
-    {
+    for (auto i = 0u; i < _msg->ranges.size(); ++i) {
       auto range = _msg->ranges[i];
-      if (range > _msg->range_min && range < _msg->range_max && range < min_range)
-      {
+      if (range > _msg->range_min && range < _msg->range_max && range < min_range) {
         min_range = range;
         idx = i;
       }
@@ -60,19 +60,14 @@ private:
     auto cmd_msg = std::make_unique<geometry_msgs::msg::Twist>();
 
     // Bad readings, stop
-    if (idx < 0)
-    {
+    if (idx < 0) {
       cmd_msg->linear.x = 0;
       cmd_msg->angular.z = 0;
-    }
-    // Too close, just rotate
-    else if (min_range <= min_dist_)
-    {
+    } else if (min_range <= min_dist_) {
+      // Too close, just rotate
       cmd_msg->linear.x = 0;
       cmd_msg->angular.z = turn * angular_k_;
-    }
-    else
-    {
+    } else {
       cmd_msg->linear.x = linear_k_ / abs(turn);
       cmd_msg->angular.z = turn * angular_k_;
     }
@@ -111,4 +106,3 @@ int main(int argc, char * argv[])
   rclcpp::shutdown();
   return 0;
 }
-
