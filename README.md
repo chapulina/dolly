@@ -55,6 +55,7 @@ Install instructions for Ubuntu Bionic.
 
 This repository contains 2 packages:
 
+* `dolly`: Metapackage which provides all other packages.
 * `dolly_follow`: Provides node with follow logic.
 * `dolly_gazebo`: Robot model, simulation world and launch scripts.
 
