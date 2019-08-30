@@ -42,8 +42,6 @@ Install instructions for Ubuntu Bionic.
 
         . /usr/share/gazebo/setup.sh
         . ~/ws/install/setup.bash
-        export GAZEBO_RESOURCE_PATH=/home/`whoami`/ws/src/dolly/dolly_gazebo/worlds:${GAZEBO_RESOURCE_PATH}
-        export GAZEBO_MODEL_PATH=/home/`whoami`/ws/src/dolly/dolly_gazebo/models:${GAZEBO_MODEL_PATH}
 
 1. Launch Dolly in a city (this will take some time to download models):
 
@@ -57,11 +55,11 @@ Install instructions for Ubuntu Bionic.
 
 This repository contains 2 packages:
 
+* `dolly`: Metapackage which provides all other packages.
 * `dolly_follow`: Provides node with follow logic.
 * `dolly_gazebo`: Robot model, simulation world and launch scripts.
 
 # TODO
 
-* Set Gazebo paths from launch file
 * Make Dolly's model available to RViz
 

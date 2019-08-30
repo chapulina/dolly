@@ -1,27 +1,24 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>dolly_gazebo</name>
+  <!-- TODO: Make this a metapackage, see
+       https://github.com/ros2/ros2/issues/408 -->
+  <name>dolly</name>
   <version>0.1.0</version>
-  <description>
-    Launch Gazebo simulation with Dolly robot.
-  </description>
+  <description>Meta-package for Dolly, the robot sheep.</description>
   <maintainer email="burajiru.no.chapulina@gmail.com">Louise Poubel</maintainer>
   <license>Apache 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <exec_depend>dolly_follow</exec_depend>
-  <exec_depend>gazebo_ros_pkgs</exec_depend>
-  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>dolly_gazebo</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
-    <gazebo_ros gazebo_model_path="${prefix}/models"/>
-    <gazebo_ros gazebo_media_path="${prefix}/worlds"/>
   </export>
 </package>
 
