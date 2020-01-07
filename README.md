@@ -10,7 +10,10 @@ Dolly has been tested on:
 
 * ROS 2 version:
     * ROS Crystal: `crystal` branch
-    * ROS Dashing: `master` branch
+    * ROS Dashing: `dashing` branch
+    * ROS Eloquent: `master` branch
+* Gazebo version:
+    * Gazebo 9
 * Operating system:
     * Ubuntu Bionic
     * OSX Sierra (thanks, @Karsten1987 !)
