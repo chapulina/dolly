@@ -64,13 +64,16 @@ Visualization Manager:
       Min Intensity: 0
       Name: LaserScan
       Position Transformer: XYZ
-      Queue Size: 10
       Selectable: true
       Size (Pixels): 3
       Size (m): 0.07999999821186066
       Style: Flat Squares
-      Topic: /dolly/laser_scan
-      Unreliable: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: System Default
+        Value: /dolly/laser_scan
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
