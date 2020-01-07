@@ -2,8 +2,8 @@
 Changelog for package dolly_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.0 (2020-01-06)
+------------------
 * Port to Eloquent (`#9 <https://github.com/chapulina/dolly/issues/9>`_)
   * Port to Eloquent
   * Update README
