@@ -60,7 +60,7 @@
         <plugin name="laser" filename="libgazebo_ros_ray_sensor.so">
           <ros>
             <namespace>/dolly</namespace>
-            <argument>~/out:=laser_scan</argument>
+            <remapping>~/out:=laser_scan</remapping>
           </ros>
           <output_type>sensor_msgs/LaserScan</output_type>
         </plugin>
