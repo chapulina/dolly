@@ -9,24 +9,14 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(DIRECTORY
-  launch
-  DESTINATION share/${PROJECT_NAME}/
-)
-
-install(DIRECTORY
-  models
-  DESTINATION share/${PROJECT_NAME}/
-)
-
-install(DIRECTORY
-  worlds
-  DESTINATION share/${PROJECT_NAME}/
-)
-
-install(DIRECTORY
-  rviz
-  DESTINATION share/${PROJECT_NAME}/
+install(
+  DIRECTORY
+    launch
+    models
+    rviz
+    worlds
+  DESTINATION
+    share/${PROJECT_NAME}/
 )
 
 ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/${PROJECT_NAME}.sh.in")

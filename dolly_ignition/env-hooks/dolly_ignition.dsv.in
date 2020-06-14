@@ -1,0 +1,6 @@
+prepend-non-duplicate;IGN_GAZEBO_RESOURCE_PATH;share/@PROJECT_NAME@/models
+prepend-non-duplicate;IGN_GAZEBO_RESOURCE_PATH;share/@PROJECT_NAME@/worlds
+prepend-non-duplicate;SDF_PATH;share/@PROJECT_NAME@/models
+prepend-non-duplicate;SDF_PATH;share/@PROJECT_NAME@/worlds
+prepend-non-duplicate;IGN_FILE_PATH;share/@PROJECT_NAME@/models
+prepend-non-duplicate;IGN_FILE_PATH;share/@PROJECT_NAME@/worlds
