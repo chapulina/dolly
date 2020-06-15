@@ -20,7 +20,7 @@ apt-get install -qq -y \
 # Get ros_ign
 mkdir -p $COLCON_WS_SRC
 cd $COLCON_WS_SRC
-git clone https://github.com/ignitionrobotics/ros_ign -b chapulina/add/ros_ign_gazebo
+git clone https://github.com/ignitionrobotics/ros_ign -b dashing
 
 # Install dependencies
 cd $COLCON_WS
