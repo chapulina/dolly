@@ -3,6 +3,8 @@
 ament_prepend_unique_value IGN_GAZEBO_RESOURCE_PATH "$AMENT_CURRENT_PREFIX/share/@PROJECT_NAME@/models"
 ament_prepend_unique_value IGN_GAZEBO_RESOURCE_PATH "$AMENT_CURRENT_PREFIX/share/@PROJECT_NAME@/worlds"
 
+export MESA_GL_VERSION_OVERRIDE=3.3
+
 # Deprecated
 
 ament_prepend_unique_value SDF_PATH "$AMENT_CURRENT_PREFIX/share/@PROJECT_NAME@/models"

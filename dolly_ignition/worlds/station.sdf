@@ -23,7 +23,8 @@
     <plugin
       filename="libignition-gazebo-sensors-system.so"
       name="ignition::gazebo::systems::Sensors">
-      <render_engine>ogre2</render_engine>
+      <!-- ogre2 not working with just the MESA_GL_VERSION_OVERRIDE=3.3 trick -->
+      <render_engine>ogre</render_engine>
     </plugin>
 
     <scene>
