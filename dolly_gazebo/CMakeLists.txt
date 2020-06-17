@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 3.5)
 
 project(dolly_gazebo)
 
+# Skip if Gazebo not present
+find_package(gazebo QUIET)
+if(NOT gazebo_FOUND)
+  message(WARNING "Gazebo not found, proceeding without that simulator.")
+  return()
+endif()
+
 find_package(ament_cmake REQUIRED)
 
 if(BUILD_TESTING)
