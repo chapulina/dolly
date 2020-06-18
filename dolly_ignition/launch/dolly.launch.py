@@ -40,13 +40,14 @@ def generate_launch_description():
 
     # Spawn dolly
     spawn = Node(package='ros_ign_gazebo', node_executable='create',
-            arguments=[
-                '-name', 'dolly',
-                '-x', '5.0',
-                '-z', '0.46',
-                '-Y', '1.57',
-                '-file', os.path.join(pkg_dolly_ignition, 'models', 'dolly_ignition', 'model.sdf')],
-            output='screen')
+                 arguments=[
+                    '-name', 'dolly',
+                    '-x', '5.0',
+                    '-z', '0.46',
+                    '-Y', '1.57',
+                    '-file', os.path.join(pkg_dolly_ignition, 'models', 'dolly_ignition',
+                                          'model.sdf')],
+                 output='screen')
 
     # Follow node
     follow = Node(

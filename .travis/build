@@ -40,4 +40,4 @@ colcon build
 
 # Tests
 colcon test
-
+colcon test-result

@@ -29,7 +29,12 @@ Dolly has been tested on:
 
 Install instructions for Ubuntu Bionic.
 
-1. Install the appropriate ROS 2 version as instructed [here](https://index.ros.org/doc/ros2/Installation/Linux-Install-Debians/).
+1. Install at least one simulator,
+   [Gazebo](http://gazebosim.org/tutorials?cat=install) or
+   [Ignition](https://ignitionrobotics.org/docs/citadel/install)
+
+1. Install the appropriate ROS 2 version as instructed
+   [here](https://index.ros.org/doc/ros2/Installation/Linux-Install-Debians/).
 
 1. Clone Dolly:
 
@@ -59,10 +64,16 @@ Install instructions for Ubuntu Bionic.
 
 ### Gazebo-classic
 
+If you had Gazebo installed when compiling Dolly's packages, Gazebo support
+should be enabled.
+
 1. Setup environment variables (the order is important):
 
         . /usr/share/gazebo/setup.sh
         . ~/ws/install/setup.bash
+
+    > *Tip*: If the command `ros2 pkg list | grep dolly_gazebo` comes up empty
+      after setting up the environment, Gazebo support wasn't correctly setup.
 
 1. Launch Dolly in a city (this will take some time to download models):
 
@@ -74,9 +85,12 @@ Install instructions for Ubuntu Bionic.
 
 ### Ignition
 
-1. Setup environment variables (the order is important):
+1. Setup environment variables:
 
         . ~/ws/install/setup.bash
+
+    > *Tip*: If the command `ros2 pkg list | grep dolly_ignition` comes up empty
+      after setting up the environment, Ignition support wasn't correctly setup.
 
 1. Launch Dolly in a station:
 
