@@ -1,0 +1,7 @@
+prepend-non-duplicate;IGN_GAZEBO_RESOURCE_PATH;share/@PROJECT_NAME@/models
+prepend-non-duplicate;IGN_GAZEBO_RESOURCE_PATH;share/@PROJECT_NAME@/worlds
+set-if-unset;MESA_GL_VERSION_OVERRIDE;3.3
+prepend-non-duplicate;SDF_PATH;share/@PROJECT_NAME@/models
+prepend-non-duplicate;SDF_PATH;share/@PROJECT_NAME@/worlds
+prepend-non-duplicate;IGN_FILE_PATH;share/@PROJECT_NAME@/models
+prepend-non-duplicate;IGN_FILE_PATH;share/@PROJECT_NAME@/worlds

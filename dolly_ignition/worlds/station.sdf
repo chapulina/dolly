@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="station">
+    <!-- Physics -->
+    <plugin
+      filename="libignition-gazebo-physics-system.so"
+      name="ignition::gazebo::systems::Physics">
+    </plugin>
+
+    <!-- Forwards simulation state to the GUI -->
+    <plugin
+      filename="libignition-gazebo-scene-broadcaster-system.so"
+      name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+
+    <!-- Processes user commands, like translate and create -->
+    <plugin
+      filename="libignition-gazebo-user-commands-system.so"
+      name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+
+    <!-- Generates rendering sensor data -->
+    <plugin
+      filename="libignition-gazebo-sensors-system.so"
+      name="ignition::gazebo::systems::Sensors">
+      <!-- ogre2 not working with just the MESA_GL_VERSION_OVERRIDE=3.3 trick -->
+      <render_engine>ogre</render_engine>
+    </plugin>
+
+    <scene>
+      <ambient>1.0 1.0 1.0 1.0</ambient>
+      <background>0.8 0.8 0.8 1.0</background>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+    <include>
+      <pose>5 2 0.23 0 0 3.14</pose>
+      <uri>model://casual_female</uri>
+    </include>
+
+    <include>
+      <pose>0 0 -5 0 0 0</pose>
+      <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Urban Station</uri>
+    </include>
+
+  </world>
+</sdf>
