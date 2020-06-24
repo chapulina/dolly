@@ -15,7 +15,7 @@
         <pose>0 0 0.02 0.04 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://casual_female/meshes/casual_female.dae</uri>
+            <uri>meshes/casual_female.dae</uri>
           </mesh>
         </geometry>
       </visual>

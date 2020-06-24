@@ -18,7 +18,7 @@ endif()
 
 install(
   DIRECTORY
-    ign_config
+    ign
     launch
     models
     rviz

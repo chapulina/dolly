@@ -111,6 +111,7 @@ This repository contains the following packages:
     * [Video](https://www.youtube.com/watch?v=Gwbk6Qf_TqY)
     * [Code](https://github.com/chapulina/simslides/tree/QConSF_Nov2018)
 * [InfoQ: Open Source Robotics: Getting Started with Gazebo and ROS 2](https://www.infoq.com/articles/ros-2-gazebo-tutorial/)
+* [ROS Developers LIVE Class #70: How to Control a Robot with ROS2 (Dashing)](https://www.youtube.com/watch?v=qB4SaP3TZog)
 * ROSConJP 2019
     * [Video](https://vimeo.com/370247782)
     * [Code](https://github.com/chapulina/rosconjp_2019)
