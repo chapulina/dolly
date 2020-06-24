@@ -27,13 +27,6 @@
       <render_engine>ogre</render_engine>
     </plugin>
 
-    <scene>
-      <ambient>1.0 1.0 1.0 1.0</ambient>
-      <background>0.8 0.8 0.8 1.0</background>
-      <grid>false</grid>
-      <origin_visual>false</origin_visual>
-    </scene>
-
     <include>
       <pose>5 2 0.23 0 0 3.14</pose>
       <uri>model://casual_female</uri>

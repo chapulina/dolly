@@ -84,7 +84,7 @@ def generate_launch_description():
           default_value=[os.path.join(pkg_dolly_ignition, 'worlds', 'station.sdf') +
                          ' -v 2 --gui-config ' +
                          os.path.join(pkg_dolly_ignition, 'ign_config', 'gui.config'), ''],
-          description='SDF world file'),
+          description='Ignition Gazebo arguments'),
         DeclareLaunchArgument('rviz', default_value='true',
                               description='Open RViz.'),
         gazebo,

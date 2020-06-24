@@ -27,7 +27,7 @@
           <ambient>1.0 1.0 1.0</ambient>
           <pbr>
             <metal>
-              <albedo_map>model://dolly_ignition/materials/textures/sheep.jpg</albedo_map>
+              <albedo_map>materials/textures/sheep.jpg</albedo_map>
             </metal>
           </pbr>
         </material>
@@ -36,7 +36,7 @@
         <pose>0 0 0.08 0 0 0.24</pose>
         <geometry>
           <mesh>
-            <uri>model://dolly_ignition/meshes/cardboard_box.dae</uri>
+            <uri>meshes/cardboard_box.dae</uri>
             <scale>1.25931896 1.007455168 0.755591376</scale>
           </mesh>
         </geometry>
@@ -257,7 +257,7 @@
           <ambient>1.0 1.0 1.0</ambient>
           <pbr>
             <metal>
-              <albedo_map>model://dolly_ignition/materials/textures/sheep.jpg</albedo_map>
+              <albedo_map>materials/textures/sheep.jpg</albedo_map>
             </metal>
           </pbr>
         </material>
