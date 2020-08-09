@@ -24,6 +24,7 @@ apt-get install -qq -y \
 
 # Get ros_ign (TODO: remove once released upstream)
 mkdir -p $COLCON_WS_SRC
+ln -s /code $COLCON_WS_SRC
 cd $COLCON_WS_SRC
 git clone https://github.com/ignitionrobotics/ros_ign -b ros2
 
@@ -31,11 +32,10 @@ git clone https://github.com/ignitionrobotics/ros_ign -b ros2
 cd $COLCON_WS
 rosdep init
 rosdep update
-rosdep install --from-paths src -i -y --rosdistro foxy -v
+rosdep install --from-paths src -i -y --rosdistro foxy
 
 # Build
 source /opt/ros/foxy/setup.bash
-ln -s /code $COLCON_WS_SRC
 cd $COLCON_WS
 colcon build
 
