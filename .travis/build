@@ -40,5 +40,5 @@ cd $COLCON_WS
 colcon build
 
 # Tests
-colcon test
+colcon test --packages-select-regex dolly
 colcon test-result
