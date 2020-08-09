@@ -41,7 +41,7 @@ def generate_launch_description():
     # Follow node
     follow = Node(
         package='dolly_follow',
-        node_executable='dolly_follow',
+        executable='dolly_follow',
         output='screen',
         remappings=[
             ('cmd_vel', '/dolly/cmd_vel'),
@@ -52,7 +52,7 @@ def generate_launch_description():
     # RViz
     rviz = Node(
         package='rviz2',
-        node_executable='rviz2',
+        executable='rviz2',
         arguments=['-d', os.path.join(pkg_dolly_gazebo, 'rviz', 'dolly_gazebo.rviz')],
         condition=IfCondition(LaunchConfiguration('rviz'))
     )

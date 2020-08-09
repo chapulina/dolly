@@ -39,7 +39,7 @@ def generate_launch_description():
     )
 
     # Spawn dolly
-    spawn = Node(package='ros_ign_gazebo', node_executable='create',
+    spawn = Node(package='ros_ign_gazebo', executable='create',
                  arguments=[
                     '-name', 'dolly',
                     '-x', '5.0',
@@ -52,7 +52,7 @@ def generate_launch_description():
     # Follow node
     follow = Node(
         package='dolly_follow',
-        node_executable='dolly_follow',
+        executable='dolly_follow',
         output='screen',
         remappings=[
             ('cmd_vel', '/dolly/cmd_vel'),
@@ -63,7 +63,7 @@ def generate_launch_description():
     # Bridge
     bridge = Node(
         package='ros_ign_bridge',
-        node_executable='parameter_bridge',
+        executable='parameter_bridge',
         arguments=['/dolly/cmd_vel@geometry_msgs/msg/Twist@ignition.msgs.Twist',
                    '/dolly/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
                    '/dolly/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry'],
@@ -73,7 +73,7 @@ def generate_launch_description():
     # RViz
     rviz = Node(
         package='rviz2',
-        node_executable='rviz2',
+        executable='rviz2',
         arguments=['-d', os.path.join(pkg_dolly_ignition, 'rviz', 'dolly_ignition.rviz')],
         condition=IfCondition(LaunchConfiguration('rviz'))
     )
