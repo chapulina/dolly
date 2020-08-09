@@ -1,39 +1,35 @@
 #!/bin/bash
 set -ev
 
-# Configuration.
+# Configuration
 export COLCON_WS=~/ws
 export COLCON_WS_SRC=${COLCON_WS}/src
 export DEBIAN_FRONTEND=noninteractive
 
-# Dependencies.
-echo "deb [trusted=yes] http://packages.osrfoundation.org/gazebo/ubuntu-stable bionic main" > /etc/apt/sources.list.d/gazebo-stable.list
-echo "deb [trusted=yes] http://packages.ros.org/ros2/ubuntu bionic main" > /etc/apt/sources.list.d/ros2-latest.list
+# Install system dependencies
 apt-get update -qq
 apt-get install -qq -y \
-  libgazebo9-dev \
-  ignition-citadel \
-  python3-colcon-common-extensions \
-  python-rosdep \
+  curl \
   git
+  gnupg2 \
+  lsb-release
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 
-# Get ros_ign
-mkdir -p $COLCON_WS_SRC
-cd $COLCON_WS_SRC
-git clone https://github.com/ignitionrobotics/ros_ign -b dashing
+echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list
 
-# Install dependencies
+apt-get update -qq
+apt-get install -qq -y \
+  python3-colcon-common-extensions \
+  python-rosdep
+
+# Install ROS, Gazebo and Ignition
 cd $COLCON_WS
 rosdep init
 rosdep update
-rosdep install --from-paths src -i -y --rosdistro eloquent \
-  --skip-keys=ignition-math6 \
-  --skip-keys=ignition-msgs5 \
-  --skip-keys=ignition-transport8 \
-  --skip-keys=ignition-gazebo3
+rosdep install --from-paths src -i -y --rosdistro foxy
 
 # Build
-source /opt/ros/eloquent/setup.bash
+source /opt/ros/foxy/setup.bash
 ln -s /code $COLCON_WS_SRC
 cd $COLCON_WS
 colcon build

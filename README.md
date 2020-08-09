@@ -11,21 +11,46 @@ Gazebo | Ignition
 -- | --
 ![Dolly Gazebo](images/dolly.gif) | ![Dolly Ignition](images/dolly_ign.gif)
 
+## Versions
+
 Dolly has been tested on:
 
-* ROS 2 version:
-    * ROS Crystal: `crystal` branch
-    * ROS Dashing: `dashing` branch
-    * ROS Eloquent: `master` branch
-* Gazebo version:
-    * Gazebo 9
-* Ignition version:
-    * Citadel
-* Operating system:
-    * Ubuntu Bionic
-    * OSX Sierra (thanks, @Karsten1987 !)
+Branch | ROS | Gazebo-classic | Ignition | OS
+-- | -- | -- | -- | -- | --
+[crystal](https://github.com/chapulina/dolly/tree/crystal) | Crystal | Gazebo 9 | :x: | Ubuntu Bionic
+[dashing](https://github.com/chapulina/dolly/tree/dashing) | Dashing | Gazebo 9 | :x: | Ubuntu Bionic, macOS Sierra
+[eloquent](https://github.com/chapulina/dolly/tree/eloquent) | Eloquent | Gazebo 9, Gazebo 11 | Citadel | Ubuntu Bionic, macOS Sierra
+[foxy](https://github.com/chapulina/dolly/tree/foxy) | Foxy | Gazebo 11 | Citadel | Ubuntu Focal
+
+## Packages
+
+This repository contains the following packages:
+
+* `dolly`: Metapackage which provides all other packages.
+* `dolly_follow`: Provides node with follow logic.
+* `dolly_gazebo`: Robot model, simulation world and launch scripts for Gazebo-classic.
+* `dolly_ignition`: Robot model, simulation world and launch scripts for Ignition.
 
 ## Install
+
+It's encouraged that you build Dolly from source, to learn about how to
+develop your own packages. But in case you just want to give it a quick
+try, there are binaries available too.
+
+### From binaries
+
+Dolly has been released into several ROS distros:
+
+ROS      | Packages
+-------- | --------
+Dashing  | `ros-dashing-dolly`
+         | `ros-dashing-dolly-follow`
+         | `ros-dashing-dolly-gazebo`
+Eloquent | `ros-eloquent-dolly`
+         | `ros-eloquent-dolly-follow`
+         | `ros-eloquent-dolly-gazebo`
+
+### From source
 
 Install instructions for Ubuntu Bionic.
 
@@ -36,15 +61,15 @@ Install instructions for Ubuntu Bionic.
 1. Install the appropriate ROS 2 version as instructed
    [here](https://index.ros.org/doc/ros2/Installation/Linux-Install-Debians/).
 
-1. Clone Dolly:
+1. Clone Dolly, choose the branch according to your ROS distro:
 
         mkdir -p ~/ws/src
         cd ~/ws/src
-        git clone https://github.com/chapulina/dolly
+        git clone https://github.com/chapulina/dolly -b <distro>
 
-1. Ignition only: clone the bridge:
+1. Ignition only, for Eloquent and earlier, clone the bridge:
 
-        git clone https://github.com/ignitionrobotics/ros_ign -b dashing
+        git clone https://github.com/ignitionrobotics/ros_ign -b <distro>
 
 1. Install dependencies:
 
@@ -54,6 +79,8 @@ Install instructions for Ubuntu Bionic.
             --skip-keys=ignition-msgs5 \
             --skip-keys=ignition-transport8 \
             --skip-keys=ignition-gazebo3
+
+    > **Tip**: On Ubuntu Focal, there's no need to skip keys.
 
 1. Build and install:
 
@@ -95,15 +122,6 @@ should be enabled.
 1. Launch Dolly in a station:
 
         ros2 launch dolly_ignition dolly.launch.py
-
-## Packages
-
-This repository contains the following packages:
-
-* `dolly`: Metapackage which provides all other packages.
-* `dolly_follow`: Provides node with follow logic.
-* `dolly_gazebo`: Robot model, simulation world and launch scripts for Gazebo-classic.
-* `dolly_ignition`: Robot model, simulation world and launch scripts for Ignition.
 
 ## Featured
 
