@@ -22,6 +22,11 @@ apt-get install -qq -y \
   python3-colcon-common-extensions \
   python-rosdep
 
+# Get ros_ign (TODO: remove once released upstream)
+mkdir -p $COLCON_WS_SRC
+cd $COLCON_WS_SRC
+git clone https://github.com/ignitionrobotics/ros_ign -b ros2
+
 # Install ROS, Gazebo and Ignition
 cd $COLCON_WS
 rosdep init
