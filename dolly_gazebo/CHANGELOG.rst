@@ -2,8 +2,8 @@
 Changelog for package dolly_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.0 (2020-08-09)
+------------------
 * More detailed collision for CPU lidar (`#19 <https://github.com/chapulina/dolly/issues/19>`_)
 * Foxy support (`#18 <https://github.com/chapulina/dolly/issues/18>`_)
 * Ignition support (`#13 <https://github.com/chapulina/dolly/issues/13>`_)
