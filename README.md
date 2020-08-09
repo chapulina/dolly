@@ -13,13 +13,13 @@ Gazebo | Ignition
 
 ## Versions
 
-Dolly has been tested on:
+Dolly is known to work on the following systems.
 
 Branch | ROS | Gazebo-classic | Ignition | OS
--- | -- | -- | -- | -- | --
+-- | -- | -- | -- | --
 [crystal](https://github.com/chapulina/dolly/tree/crystal) | Crystal | Gazebo 9 | :x: | Ubuntu Bionic
 [dashing](https://github.com/chapulina/dolly/tree/dashing) | Dashing | Gazebo 9 | :x: | Ubuntu Bionic, macOS Sierra
-[eloquent](https://github.com/chapulina/dolly/tree/eloquent) | Eloquent | Gazebo 9, Gazebo 11 | Citadel | Ubuntu Bionic, macOS Sierra
+[eloquent](https://github.com/chapulina/dolly/tree/eloquent) | Eloquent | Gazebo 9, Gazebo 11 | Citadel | Ubuntu Bionic
 [foxy](https://github.com/chapulina/dolly/tree/foxy) | Foxy | Gazebo 11 | Citadel | Ubuntu Focal
 
 ## Packages
@@ -126,11 +126,15 @@ should be enabled.
 ## Featured
 
 * QConSF 2018
-    * [Video](https://www.youtube.com/watch?v=Gwbk6Qf_TqY)
-    * [Code](https://github.com/chapulina/simslides/tree/QConSF_Nov2018)
-* [InfoQ: Open Source Robotics: Getting Started with Gazebo and ROS 2](https://www.infoq.com/articles/ros-2-gazebo-tutorial/)
-* [ROS Developers LIVE Class #70: How to Control a Robot with ROS2 (Dashing)](https://www.youtube.com/watch?v=qB4SaP3TZog)
+    * 🎥 [Open Source Robotics: Hands on with Gazebo and ROS 2](https://www.youtube.com/watch?v=Gwbk6Qf_TqY)
+    * ⌨️ [Source code](https://github.com/chapulina/simslides/tree/QConSF_Nov2018)
+* InfoQ
+    * 📰 [Open Source Robotics: Getting Started with Gazebo and ROS 2](https://www.infoq.com/articles/ros-2-gazebo-tutorial/)
+* ROS Developers Live Class
+    * 🎥 [#70 How to Control a Robot with ROS2 (Dashing)](https://www.youtube.com/watch?v=qB4SaP3TZog)
+    * 🎥 [#71 How to visualize sensor data in ROS2](https://www.youtube.com/watch?v=s3fBGSpmER0)
 * ROSConJP 2019
-    * [Video](https://vimeo.com/370247782)
-    * [Code](https://github.com/chapulina/rosconjp_2019)
-
+    * 🎥 [これからのGazebo: ROSのシミュレーションの次世代](https://vimeo.com/370247782)
+    * ⌨️ [Source code](https://github.com/chapulina/rosconjp_2019)
+* ROS Developers Day 2020
+    * 🎥 [Hands-on with Ignition and ROS2](https://youtu.be/nLp4uzN5NMs?t=622)
