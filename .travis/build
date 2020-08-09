@@ -31,7 +31,7 @@ git clone https://github.com/ignitionrobotics/ros_ign -b ros2
 cd $COLCON_WS
 rosdep init
 rosdep update
-rosdep install --from-paths src -i -y --rosdistro foxy
+rosdep install --from-paths src -i -y --rosdistro foxy -v
 
 # Build
 source /opt/ros/foxy/setup.bash
