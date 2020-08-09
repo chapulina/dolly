@@ -2,6 +2,11 @@
 Changelog for package dolly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Ignition support (`#13 <https://github.com/chapulina/dolly/issues/13>`_)
+* Contributors: Louise Poubel
+
 0.2.0 (2020-01-06)
 ------------------
 
