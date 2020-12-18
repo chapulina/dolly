@@ -41,14 +41,14 @@ try, there are binaries available too.
 
 Dolly has been released into several ROS distros:
 
-ROS      | Packages
--------- | --------
-Dashing  | `ros-dashing-dolly`
-         | `ros-dashing-dolly-follow`
-         | `ros-dashing-dolly-gazebo`
-Eloquent | `ros-eloquent-dolly`
-         | `ros-eloquent-dolly-follow`
-         | `ros-eloquent-dolly-gazebo`
+| ROS      | Packages                    |
+|----------|-----------------------------|
+| Dashing  | `ros-dashing-dolly`         |
+|          | `ros-dashing-dolly-follow`  |
+|          | `ros-dashing-dolly-gazebo`  |
+| Eloquent | `ros-eloquent-dolly`        |
+|          | `ros-eloquent-dolly-follow` |
+|          | `ros-eloquent-dolly-gazebo` |
 
 ### From source
 
