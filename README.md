@@ -21,6 +21,7 @@ Branch | ROS | Gazebo-classic | Ignition | OS
 [dashing](https://github.com/chapulina/dolly/tree/dashing) | Dashing | Gazebo 9 | :x: | Ubuntu Bionic, macOS Sierra
 [eloquent](https://github.com/chapulina/dolly/tree/eloquent) | Eloquent | Gazebo 9, Gazebo 11 | Citadel | Ubuntu Bionic
 [foxy](https://github.com/chapulina/dolly/tree/foxy) | Foxy | Gazebo 11 | Citadel | Ubuntu Focal
+[galactic](https://github.com/chapulina/dolly/tree/galactic) | Galactic, Rolling | Gazebo 11 | Edifice | Ubuntu Focal
 
 ## Packages
 
@@ -39,16 +40,23 @@ try, there are binaries available too.
 
 ### From binaries
 
-Dolly has been released into several ROS distros:
+Dolly has been released into several ROS distros. These are the currently
+supported ones:
 
-| ROS      | Packages                    |
-|----------|-----------------------------|
-| Dashing  | `ros-dashing-dolly`         |
-|          | `ros-dashing-dolly-follow`  |
-|          | `ros-dashing-dolly-gazebo`  |
-| Eloquent | `ros-eloquent-dolly`        |
-|          | `ros-eloquent-dolly-follow` |
-|          | `ros-eloquent-dolly-gazebo` |
+| ROS      | Packages                       |
+|----------|--------------------------------|
+| Foxy     | `ros-foxy-dolly`               |
+|          | `ros-foxy-dolly-follow`        |
+|          | `ros-foxy-dolly-gazebo`        |
+|          | `ros-foxy-dolly-ignition `     |
+| Galactic | `ros-galactic-dolly`           |
+|          | `ros-galactic-dolly-follow`    |
+|          | `ros-galactic-dolly-gazebo`    |
+|          | `ros-galactic-dolly-ignition ` |
+| Rolling  | `ros-rolling-dolly`            |
+|          | `ros-rolling-dolly-follow`     |
+|          | `ros-rolling-dolly-gazebo`     |
+|          | `ros-rolling-dolly-ignition `  |
 
 ### From source
 
@@ -56,7 +64,7 @@ Install instructions for Ubuntu Bionic.
 
 1. Install at least one simulator,
    [Gazebo](http://gazebosim.org/tutorials?cat=install) or
-   [Ignition](https://ignitionrobotics.org/docs/citadel/install)
+   [Ignition](https://ignitionrobotics.org/docs/edifice/install)
 
 1. Install the appropriate ROS 2 version as instructed
    [here](https://index.ros.org/doc/ros2/Installation/Linux-Install-Debians/).
@@ -67,20 +75,10 @@ Install instructions for Ubuntu Bionic.
         cd ~/ws/src
         git clone https://github.com/chapulina/dolly -b <distro>
 
-1. Ignition only, for Eloquent and earlier, clone the bridge:
-
-        git clone https://github.com/ignitionrobotics/ros_ign -b <distro>
-
 1. Install dependencies:
 
         cd ~/ws
-        rosdep install --from-paths src --ignore-src -r -y \
-            --skip-keys=ignition-math6 \
-            --skip-keys=ignition-msgs5 \
-            --skip-keys=ignition-transport8 \
-            --skip-keys=ignition-gazebo3
-
-    > **Tip**: On Ubuntu Focal, there's no need to skip keys.
+        rosdep install --from-paths src --ignore-src -r -y
 
 1. Build and install:
 

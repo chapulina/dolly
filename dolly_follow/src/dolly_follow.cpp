@@ -27,13 +27,14 @@ public:
   Follow()
   : Node("follow")
   {
-    auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     // Subscribe to sensor messages
+    auto sensor_qos = rclcpp::QoS(rclcpp::SensorDataQoS());
     laser_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
-      "laser_scan", default_qos,
+      "laser_scan", sensor_qos,
       std::bind(&Follow::OnSensorMsg, this, std::placeholders::_1));
 
     // Advertise velocity commands
+    auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", default_qos);
   }
 
