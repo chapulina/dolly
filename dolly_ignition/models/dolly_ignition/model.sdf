@@ -327,11 +327,19 @@
       </physics>
     </joint>
 
+    <!--
+        Load Ignition's diff-drive controller, which uses Ignition Transport.
+        The Ignition topics are bridged to ROS with ros_ign_bridge.
+    -->
     <plugin
-      filename="libignition-gazebo-diff-drive-system.so"
+      filename="ignition-gazebo-diff-drive-system"
       name="ignition::gazebo::systems::DiffDrive">
+
+      <!-- wheels -->
       <left_joint>left_wheel_joint</left_joint>
       <right_joint>right_wheel_joint</right_joint>
+
+      <!-- kinematics -->
       <wheel_separation>1.25</wheel_separation>
       <wheel_radius>0.3</wheel_radius>
       <topic>/dolly/cmd_vel</topic>
