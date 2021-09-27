@@ -327,6 +327,9 @@
       </physics>
     </joint>
 
+    <!--
+        Load Gazebo-ROS's diff-drive controller, which exposes a ROS interface.
+    -->
     <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
 
       <ros>
