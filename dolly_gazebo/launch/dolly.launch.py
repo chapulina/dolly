@@ -24,10 +24,42 @@ from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+from launch.substitutions import EnvironmentVariable
+from launch.actions import SetEnvironmentVariable
+from launch import LaunchContext
 
+def setenv(lc):
+    with open("/usr/share/gazebo/setup.sh") as f:
+        lines = f.readlines()
+        for line in lines:
+            line = line.strip().split()
+            if len(line) > 1 and line[0] == "export":
+                line = line[1].split('=')
+                ev = ""
+                if len(line) > 1:
+                    ev = line[0]
+                    curr = "${"+ev+"}"
+                    prepend = line[1].endswith(curr)
+                    val = line[1].replace(curr, "")
+                    if os.environ.get(ev):
+                        if not prepend:
+                            if val[0] != os.pathsep:
+                                val = os.pathsep + val
+                            SetEnvironmentVariable(ev, [EnvironmentVariable(ev), val]).visit(lc)
+                        else:
+                            if val[-1] != os.pathsep:
+                                val += os.pathsep
+                            SetEnvironmentVariable(ev, [val, EnvironmentVariable(ev)]).visit(lc)
+                    else:
+                        SetEnvironmentVariable(ev, val).visit(lc)
+                    #  print(ev+"======")
+                    #  print(os.environ.get(ev))
 
 def generate_launch_description():
 
+    lc = LaunchContext()
+
+    setenv(lc)
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     pkg_dolly_gazebo = get_package_share_directory('dolly_gazebo')
 
