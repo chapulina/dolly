@@ -2,6 +2,11 @@
 Changelog for package dolly_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Galactic + Edifice support
+* Contributors: Louise Poubel
+
 0.3.0 (2020-08-09)
 ------------------
 * More detailed collision for CPU lidar (`#19 <https://github.com/chapulina/dolly/issues/19>`_)

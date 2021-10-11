@@ -2,6 +2,11 @@
 Changelog for package dolly_follow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Galactic + Edifice support
+* Contributors: Louise Poubel
+
 0.3.0 (2020-08-09)
 ------------------
 
