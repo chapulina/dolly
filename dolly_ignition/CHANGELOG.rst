@@ -2,8 +2,8 @@
 Changelog for package dolly_ignition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.0 (2021-10-10)
+------------------
 * Galactic + Edifice support
 * Make ros_ign_gazebo more than exec_depend (`#26 <https://github.com/chapulina/dolly/issues/26>`_)
 * Contributors: Louise Poubel

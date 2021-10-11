@@ -4,7 +4,7 @@
   <!-- TODO: Make this a metapackage, see
        https://github.com/ros2/ros2/issues/408 -->
   <name>dolly</name>
-  <version>0.3.0</version>
+  <version>0.4.0</version>
   <description>Meta-package for Dolly, the robot sheep.</description>
   <maintainer email="burajiru.no.chapulina@gmail.com">Louise Poubel</maintainer>
   <license>Apache 2.0</license>
