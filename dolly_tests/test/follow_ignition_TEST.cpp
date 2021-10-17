@@ -21,8 +21,12 @@
 #include <ignition/gazebo/Util.hh>
 #include <ignition/gazebo/TestFixture.hh>
 
+#include <chrono>
 #include <memory>
+#include <thread>
 #include <vector>
+
+using namespace std::chrono_literals;
 
 //////////////////////////////////////////////////
 //
@@ -36,45 +40,60 @@ TEST(DollyTests, Follow)
   ignition::gazebo::TestFixture fixture("empty.sdf");
 
   int iterations{0};
-  ignition::gazebo::Entity dollyEntity;
+  ignition::gazebo::World world;
+  ignition::gazebo::Entity dollyEntity{ignition::gazebo::kNullEntity};
   std::vector<ignition::math::Pose3d> dollyPoses;
 
   fixture.
   // Use configure callback to get values at startup
   OnConfigure(
-    [&dollyEntity, &dollyPoses](const ignition::gazebo::Entity & _worldEntity,
+    [&](const ignition::gazebo::Entity & _worldEntity,
     const std::shared_ptr<const sdf::Element> & /*_sdf*/,
     ignition::gazebo::EntityComponentManager & _ecm,
     ignition::gazebo::EventManager & /*_eventMgr*/)
     {
       // Get world
-      ignition::gazebo::World world(_worldEntity);
-
-      // Get dolly entity once it's spawned
-//      dollyEntity = world.ModelByName(_ecm, "dolly");
-//      EXPECT_NE(ignition::gazebo::kNullEntity, dollyEntity);
+      world = ignition::gazebo::World(_worldEntity);
     }).
   // Use post-update callback to get values at the end of every iteration
   OnPostUpdate(
-    [&iterations, &dollyEntity, &dollyPoses](
+    [&](
       const ignition::gazebo::UpdateInfo & _info,
       const ignition::gazebo::EntityComponentManager & _ecm)
     {
+      iterations++;
+
+      // Get dolly entity once it's spawned
+      dollyEntity = world.ModelByName(_ecm, "dolly");
+      if (ignition::gazebo::kNullEntity == dollyEntity)
+        return;
+
+      EXPECT_NE(ignition::gazebo::kNullEntity, dollyEntity);
+
       // Inspect all model poses
       dollyPoses.push_back(ignition::gazebo::worldPose(dollyEntity, _ecm));
 
 //      EXPECT_DOUBLE_EQ(0.0, pose.Pos().X());
 //      EXPECT_DOUBLE_EQ(0.0, pose.Pos().Y());
 
-      iterations++;
     }).
   // The moment we finalize, the configure callback is called
   Finalize();
 
   // Setup simulation server, this will call the post-update callbacks.
   // It also calls pre-update and update callbacks if those are being used.
-  fixture.Server()->Run(true, 1000, false);
+  int sleep = 0;
+  int maxSleep = 30;
+  for (; sleep <= maxSleep && ignition::gazebo::kNullEntity == dollyEntity;
+      ++sleep) {
+    std::this_thread::sleep_for(100ms);
+    fixture.Server()->Run(true, 10, false);
+  }
 
-  // Verify that the post update function was called 1000 times
-  EXPECT_EQ(1000, iterations);
+  EXPECT_LT(sleep, maxSleep);
+  EXPECT_EQ(10 * sleep, iterations);
+  EXPECT_NE(ignition::gazebo::kNullEntity, dollyEntity);
+
+  // TODO: check Dolly doesn't move if there isn't anything around
+  // TODO: spawn object and check Dolly's movement
 }

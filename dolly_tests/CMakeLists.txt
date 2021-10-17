@@ -32,14 +32,16 @@ if(BUILD_TESTING)
   find_package(launch_testing_ament_cmake REQUIRED)
   ament_find_gtest()
 
-  ament_add_gtest_executable(follow_TEST test/follow_TEST.cpp)
-  target_link_libraries(follow_TEST
+  set(TEST_NAME follow_ignition_TEST)
+  ament_add_gtest_executable(${TEST_NAME} test/${TEST_NAME}.cpp)
+  target_link_libraries(${TEST_NAME}
     ignition-gazebo${IGN_GAZEBO_VER}::ignition-gazebo${IGN_GAZEBO_VER}
   )
-
-  install(TARGETS follow_TEST DESTINATION lib/${PROJECT_NAME})
-
-  add_launch_test(launch/follow_test.launch.py
+  install(
+    TARGETS ${TEST_NAME}
+    DESTINATION lib/${PROJECT_NAME}
+  )
+  add_launch_test(launch/${TEST_NAME}.launch.py
     TIMEOUT 200
   )
 endif()
