@@ -1,23 +1,22 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>dolly_ignition</name>
+  <name>dolly_tests</name>
   <version>0.4.0</version>
   <description>
-    Launch Ignition simulation with Dolly robot.
+    Tests for the Dolly robot.
   </description>
   <maintainer email="burajiru.no.chapulina@gmail.com">Louise Poubel</maintainer>
   <license>Apache 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>ros_ign_gazebo</depend>
-
   <exec_depend>dolly_follow</exec_depend>
+  <exec_depend>dolly_ignition</exec_depend>
   <exec_depend>ros_ign_bridge</exec_depend>
   <exec_depend>ros2launch</exec_depend>
-  <exec_depend>rviz2</exec_depend>
 
+  <test_depend>ament_cmake_gtest</test_depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
