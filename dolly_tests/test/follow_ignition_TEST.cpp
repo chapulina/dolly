@@ -87,8 +87,7 @@ TEST(DollyTests, Follow)
   // The moment we finalize, the configure callback is called
   Finalize();
 
-  // Setup simulation server, this will call the post-update callbacks.
-  // It also calls pre-update and update callbacks if those are being used.
+  // Run simulation server, this will call the post-update callbacks.
   int sleep = 0;
   int maxSleep = 30;
   for (; sleep <= maxSleep && ignition::gazebo::kNullEntity == dollyEntity;
