@@ -50,5 +50,5 @@ cd $COLCON_WS
 colcon build --event-handlers console_direct+
 
 # Test
-colcon test --event-handlers console_direct+
+colcon test --event-handlers console_direct+ --packages-select-regex dolly
 colcon test-result

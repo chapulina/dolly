@@ -188,8 +188,8 @@ TEST(DollyTests, Follow)
 
   ignwarn << "Recorded [" << dollyPoses.size() << "] poses" << std::endl;
 
-  for (auto i = 0; i < dollyPoses.size(); i = i + 100) {
-    if (i == 0) {
+  for (auto i = 2000; i < dollyPoses.size(); i = i + 100) {
+    if (i == 2000) {
       continue;
     }
 
@@ -199,10 +199,8 @@ TEST(DollyTests, Follow)
     // Going forward
     EXPECT_LT(prevPose.Pos().X(), pose.Pos().X()) << i;
 
-    // Going right after a while
-    if (i > 1400) {
-      EXPECT_GT(prevPose.Pos().Y(), pose.Pos().Y()) << i;
-    }
+    // Going right
+    EXPECT_GT(prevPose.Pos().Y(), pose.Pos().Y()) << i;
 
     // Turning right
     EXPECT_GT(prevPose.Rot().Yaw(), pose.Rot().Yaw()) << i;
@@ -211,5 +209,15 @@ TEST(DollyTests, Follow)
     EXPECT_NEAR(prevPose.Pos().Z(), pose.Pos().Z(), 1e-3) << i;
     EXPECT_NEAR(prevPose.Rot().Roll(), pose.Rot().Roll(), 1e-3) << i;
     EXPECT_NEAR(prevPose.Rot().Pitch(), pose.Rot().Pitch(), 1e-3) << i;
+  }
+
+  {
+    const auto & pose = dollyPoses.back();
+    EXPECT_LT(1.0, pose.Pos().X());
+    EXPECT_GT(-0.3, pose.Pos().Y());
+    EXPECT_NEAR(0.22, pose.Pos().Z(), 1e-2);
+    EXPECT_NEAR(0.0, pose.Rot().Roll(), 1e-3);
+    EXPECT_NEAR(0.0, pose.Rot().Pitch(), 1e-3);
+    EXPECT_GT(-0.5, pose.Rot().Yaw());
   }
 }
