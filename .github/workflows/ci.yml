@@ -27,7 +27,7 @@ jobs:
           branch: ros2
           path: ros_ign
       - name: Build and test
-        run: .github/workflows/build-and-test.sh
+        run: main/.github/workflows/build-and-test.sh
         env:
           DOCKER_IMAGE: ${{ matrix.docker-image }}
           IGNITION_VERSION: ${{ matrix.ignition-version  }}
