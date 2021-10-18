@@ -242,7 +242,7 @@
           <iyz>0</iyz>
           <izz>3.45e-06</izz>
         </inertia>
-        <pose frame=''>0 0 -0.04 0 -0 0</pose>
+        <pose>0 0 -0.04 0 -0 0</pose>
       </inertial>
       <visual name='visual'>
         <geometry>

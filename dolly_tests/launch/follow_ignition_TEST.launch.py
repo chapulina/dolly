@@ -16,8 +16,6 @@ import os
 import unittest
 import launch_testing
 
-import ament_index_python
-
 import launch
 import launch.actions
 import launch_testing.actions
@@ -34,9 +32,7 @@ def generate_test_description():
     spawn = Node(package='ros_ign_gazebo', executable='create',
                  arguments=[
                     '-name', 'dolly',
-                    '-x', '5.0',
-                    '-z', '0.46',
-                    '-Y', '1.57',
+                    '-z', '0.225',
                     '-file', os.path.join(pkg_dolly_ignition, 'models', 'dolly_ignition',
                                           'model.sdf')],
                  output='screen')

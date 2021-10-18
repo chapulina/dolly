@@ -32,11 +32,16 @@ if(BUILD_TESTING)
   find_package(launch_testing_ament_cmake REQUIRED)
   ament_find_gtest()
 
+  set("PROJECT_BINARY_PATH" ${CMAKE_CURRENT_BINARY_DIR})
+  set("PROJECT_SOURCE_PATH" ${CMAKE_CURRENT_SOURCE_DIR})
+  configure_file(test/constants.hh.in constants.hh @ONLY)
+
   set(TEST_NAME follow_ignition_TEST)
   ament_add_gtest_executable(${TEST_NAME} test/${TEST_NAME}.cpp)
   target_link_libraries(${TEST_NAME}
     ignition-gazebo${IGN_GAZEBO_VER}::ignition-gazebo${IGN_GAZEBO_VER}
   )
+  include_directories(${CMAKE_CURRENT_BINARY_DIR})
   install(
     TARGETS ${TEST_NAME}
     DESTINATION lib/${PROJECT_NAME}
@@ -45,5 +50,12 @@ if(BUILD_TESTING)
     TIMEOUT 200
   )
 endif()
+
+install(
+  DIRECTORY
+    worlds
+  DESTINATION
+    share/${PROJECT_NAME}/
+)
 
 ament_package()
