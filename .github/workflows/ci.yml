@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ignitionrobotics/ros_ign
-          branch: ros2
+          ref: ros2
           path: ros_ign
       - name: Build and test
         run: main/.github/workflows/build-and-test.sh
