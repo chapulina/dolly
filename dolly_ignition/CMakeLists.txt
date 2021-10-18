@@ -2,11 +2,22 @@ cmake_minimum_required(VERSION 3.5)
 
 project(dolly_ignition)
 
-# Skip if Ignition not present
-find_package(ignition-gazebo5 QUIET)
-if(NOT ignition-gazebo5_FOUND)
-  message(WARNING "Ignition Gazebo 5 not found, proceeding without that simulator.")
-  return()
+# Fortress
+if("$ENV{IGNITION_VERSION}" STREQUAL "fortress")
+  find_package(ignition-gazebo6 REQUIRED)
+
+  message(STATUS "Using Ignition Fortress")
+# Default to Edifice
+else()
+  find_package(ignition-gazebo5 QUIET)
+
+  if(NOT ignition-gazebo5_FOUND)
+    # Skip if Ignition not present
+    message(WARNING "Ignition Gazebo 5 or 6 not found, proceeding without that simulator.")
+    return()
+  else()
+    message(STATUS "Using Ignition Edifice")
+  endif()
 endif()
 
 find_package(ament_cmake REQUIRED)

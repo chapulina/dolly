@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>dolly_tests</name>
+  <version>0.4.0</version>
+  <description>
+    Tests for the Dolly robot.
+  </description>
+  <maintainer email="burajiru.no.chapulina@gmail.com">Louise Poubel</maintainer>
+  <license>Apache 2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>ament_cmake_gtest</depend>
+  <depend>ament_lint_auto</depend>
+  <depend>ament_lint_common</depend>
+  <depend>dolly_follow</depend>
+  <depend>dolly_ignition</depend>
+  <depend>launch_testing</depend>
+  <depend>ros2launch</depend>
+  <depend>ros_ign_bridge</depend>
+
+  <!-- Fortress -->
+  <depend condition="$IGNITION_VERSION == fortress">ignition-gazebo6</depend>
+  <!-- Edifice (default) -->
+  <depend condition="$IGNITION_VERSION == edifice">ignition-gazebo5</depend>
+  <depend condition="$IGNITION_VERSION == ''">ignition-gazebo5</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+

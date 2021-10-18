@@ -1,0 +1,34 @@
+name: Build and test
+
+on: [push, pull_request]
+
+jobs:
+  build_and_test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - docker-image: "ubuntu:20.04"
+            ignition-version: "fortress"
+            ros-distro: "rolling"
+    container:
+      image: ${{ matrix.docker-image }}
+    steps:
+      - name: Checkout dolly
+        uses: actions/checkout@v2
+        with:
+          path: main
+      # Compiling ros_ign from source because Rolling isn't using Fortress yet
+      - name: Checkout ros_ign
+        uses: actions/checkout@v2
+        with:
+          repository: ignitionrobotics/ros_ign
+          ref: ros2
+          path: ros_ign
+      - name: Build and test
+        run: main/.github/workflows/build-and-test.sh
+        env:
+          DOCKER_IMAGE: ${{ matrix.docker-image }}
+          IGNITION_VERSION: ${{ matrix.ignition-version  }}
+          ROS_DISTRO: ${{ matrix.ros-distro }}

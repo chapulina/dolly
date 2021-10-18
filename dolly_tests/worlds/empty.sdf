@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="empty">
+    <physics name="5ms" type="dart">
+      <max_step_size>0.005</max_step_size>
+      <!-- Zero to run as fast as possible -->
+      <real_time_factor>0</real_time_factor>
+    </physics>
+
+    <!-- Physics -->
+    <plugin
+      filename="libignition-gazebo-physics-system.so"
+      name="ignition::gazebo::systems::Physics">
+    </plugin>
+
+    <!-- Processes user commands, used to spawn models -->
+    <plugin
+      filename="libignition-gazebo-user-commands-system.so"
+      name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+
+    <!-- Generates rendering sensor data -->
+    <plugin
+      filename="libignition-gazebo-sensors-system.so"
+      name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+  </world>
+</sdf>
