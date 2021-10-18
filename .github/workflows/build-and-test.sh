@@ -29,12 +29,21 @@ apt-get install -y $IGN_DEPS \
 
 rosdep init
 rosdep update
-rosdep install --from-paths ./ -i -y -r --rosdistro $ROS_DISTRO
+
+# Create workspace and copy Dolly code there
+mkdir -p $COLCON_WS_SRC
+cp -r $GITHUB_WORKSPACE $COLCON_WS_SRC
+
+# We're using a non-official ROS + Ignition combination (for now), so ros_ign
+# needs to be compiled from source
+cd $COLCON_WS_SRC
+git clone https://github.com/ignitionrobotics/rog_ign -b ros2
+
+# Install ROS dependencies
+rosdep install --from-paths $COLCON_WS_SRC -i -y -r --rosdistro $ROS_DISTRO
 
 # Build
 source /opt/ros/$ROS_DISTRO/setup.bash
-mkdir -p $COLCON_WS_SRC
-cp -r $GITHUB_WORKSPACE $COLCON_WS_SRC
 cd $COLCON_WS
 colcon build --event-handlers console_direct+
 
