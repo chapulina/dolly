@@ -17,12 +17,15 @@ jobs:
     steps:
       - name: Checkout dolly
         uses: actions/checkout@v2
+        with:
+          path: main
       # Compiling ros_ign from source because Rolling isn't using Fortress yet
       - name: Checkout ros_ign
         uses: actions/checkout@v2
         with:
           repository: ignitionrobotics/ros_ign
           branch: ros2
+          path: ros_ign
       - name: Build and test
         run: .github/workflows/build-and-test.sh
         env:
