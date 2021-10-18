@@ -214,7 +214,7 @@ TEST(DollyTests, Follow)
   {
     const auto & pose = dollyPoses.back();
     EXPECT_LT(1.0, pose.Pos().X());
-    EXPECT_GT(-0.3, pose.Pos().Y());
+    EXPECT_GT(-0.2, pose.Pos().Y());
     EXPECT_NEAR(0.22, pose.Pos().Z(), 1e-2);
     EXPECT_NEAR(0.0, pose.Rot().Roll(), 1e-3);
     EXPECT_NEAR(0.0, pose.Rot().Pitch(), 1e-3);
