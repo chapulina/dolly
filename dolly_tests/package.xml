@@ -11,14 +11,20 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <exec_depend>dolly_follow</exec_depend>
-  <exec_depend>dolly_ignition</exec_depend>
-  <exec_depend>ros_ign_bridge</exec_depend>
-  <exec_depend>ros2launch</exec_depend>
+  <depend>ament_cmake_gtest</depend>
+  <depend>ament_lint_auto</depend>
+  <depend>ament_lint_common</depend>
+  <depend>dolly_follow</depend>
+  <depend>dolly_ignition</depend>
+  <depend>launch_testing</depend>
+  <depend>ros2launch</depend>
+  <depend>ros_ign_bridge</depend>
 
-  <test_depend>ament_cmake_gtest</test_depend>
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+  <!-- Fortress -->
+  <depend condition="$IGNITION_VERSION == fortress">ignition-gazebo6</depend>
+  <!-- Edifice (default) -->
+  <depend condition="$IGNITION_VERSION == edifice">ignition-gazebo5</depend>
+  <depend condition="$IGNITION_VERSION == ''">ignition-gazebo5</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
