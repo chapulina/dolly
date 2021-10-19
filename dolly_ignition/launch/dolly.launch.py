@@ -39,6 +39,7 @@ def generate_launch_description():
     )
 
     # Spawn dolly
+    # TODO: expose pose as a launch argument
     spawn = Node(package='ros_ign_gazebo', executable='create',
                  arguments=[
                     '-name', 'dolly',
