@@ -8,6 +8,10 @@ export COLCON_WS_SRC=${COLCON_WS}/src
 export DEBIAN_FRONTEND=noninteractive
 export ROS_PYTHON_VERSION=3
 
+# For headless rendering
+export DISPLAY=:1.0
+export MESA_GL_VERSION_OVERRIDE=3.3
+
 apt update -qq
 apt install -qq -y lsb-release wget curl build-essential
 
