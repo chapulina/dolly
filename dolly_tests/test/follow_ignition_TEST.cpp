@@ -161,7 +161,7 @@ TEST(DollyTests, Follow)
   EXPECT_NE(ignition::gazebo::kNullEntity, targetEntity);
   EXPECT_LT(0u, dollyPoses.size());
 
-  // Dolly hasn't moved, because simulation is paused
+  // Dolly hasn't moved yet
   {
     const auto & pose = dollyPoses.back();
     EXPECT_NEAR(0.0, pose.Pos().X(), 1e-3);

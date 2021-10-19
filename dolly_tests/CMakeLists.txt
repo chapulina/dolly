@@ -32,7 +32,6 @@ if(BUILD_TESTING)
   find_package(launch_testing_ament_cmake REQUIRED)
   ament_find_gtest()
 
-  set("PROJECT_BINARY_PATH" ${CMAKE_CURRENT_BINARY_DIR})
   set("PROJECT_SOURCE_PATH" ${CMAKE_CURRENT_SOURCE_DIR})
   configure_file(test/constants.hh.in constants.hh @ONLY)
 

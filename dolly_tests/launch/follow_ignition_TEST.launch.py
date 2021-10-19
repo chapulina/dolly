@@ -27,6 +27,13 @@ from launch_ros.actions import Node
 
 def generate_test_description():
 
+    # Test fixture
+    gazebo_test_fixture = Node(
+        package='dolly_tests',
+        executable='follow_ignition_TEST',
+        output='screen'
+    )
+
     # Spawn dolly
     pkg_dolly_ignition = get_package_share_directory('dolly_ignition')
     spawn = Node(package='ros_ign_gazebo', executable='create',
@@ -36,6 +43,15 @@ def generate_test_description():
                     '-file', os.path.join(pkg_dolly_ignition, 'models', 'dolly_ignition',
                                           'model.sdf')],
                  output='screen')
+
+    # Bridge
+    bridge = Node(
+        package='ros_ign_bridge',
+        executable='parameter_bridge',
+        arguments=['/dolly/cmd_vel@geometry_msgs/msg/Twist@ignition.msgs.Twist',
+                   '/dolly/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan'],
+        output='screen'
+    )
 
     # Follow node
     follow = Node(
@@ -48,22 +64,6 @@ def generate_test_description():
         ]
     )
 
-    # Bridge
-    bridge = Node(
-        package='ros_ign_bridge',
-        executable='parameter_bridge',
-        arguments=['/dolly/cmd_vel@geometry_msgs/msg/Twist@ignition.msgs.Twist',
-                   '/dolly/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
-                   '/dolly/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry'],
-        output='screen'
-    )
-
-    # Test
-    gazebo_test_fixture = Node(
-        package='dolly_tests',
-        executable='follow_ignition_TEST',
-        output='screen'
-    )
 
     return launch.LaunchDescription([
         gazebo_test_fixture,
