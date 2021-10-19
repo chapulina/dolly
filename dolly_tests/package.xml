@@ -11,13 +11,20 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <!-- ament -->
   <depend>ament_cmake_gtest</depend>
   <depend>ament_lint_auto</depend>
   <depend>ament_lint_common</depend>
+
+  <!-- dolly -->
   <depend>dolly_follow</depend>
   <depend>dolly_ignition</depend>
+
+  <!-- ROS launch -->
   <depend>launch_testing</depend>
   <depend>ros2launch</depend>
+
+  <!-- gazebo -->
   <depend>ros_ign_bridge</depend>
 
   <!-- Fortress -->

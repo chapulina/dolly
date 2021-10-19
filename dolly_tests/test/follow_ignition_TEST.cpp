@@ -41,8 +41,12 @@ TEST(DollyTests, Follow)
 
   // Instantiate test fixture. It starts a simulation server and provides
   // hooks that we'll use to inspect the running simulation.
-  ignition::gazebo::TestFixture fixture(ignition::common::joinPaths(
+  ignition::gazebo::ServerConfig config;
+  config.SetSdfFile(ignition::common::joinPaths(
       std::string(PROJECT_SOURCE_PATH), "worlds", "empty.sdf"));
+  config.SetHeadlessRendering(true);
+
+  ignition::gazebo::TestFixture fixture(config);
 
   // Variables that will be populated during the simulation
   int iterations{0};
@@ -161,7 +165,7 @@ TEST(DollyTests, Follow)
   EXPECT_NE(ignition::gazebo::kNullEntity, targetEntity);
   EXPECT_LT(0u, dollyPoses.size());
 
-  // Dolly hasn't moved, because simulation is paused
+  // Dolly hasn't moved yet
   {
     const auto & pose = dollyPoses.back();
     EXPECT_NEAR(0.0, pose.Pos().X(), 1e-3);
