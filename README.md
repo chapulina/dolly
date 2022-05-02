@@ -21,7 +21,7 @@ Branch | ROS | Gazebo-classic | Ignition | OS
 [dashing](https://github.com/chapulina/dolly/tree/dashing) | Dashing | Gazebo 9 | :x: | Ubuntu Bionic, macOS Sierra
 [eloquent](https://github.com/chapulina/dolly/tree/eloquent) | Eloquent | Gazebo 9, Gazebo 11 | Citadel | Ubuntu Bionic
 [foxy](https://github.com/chapulina/dolly/tree/foxy) | Foxy | Gazebo 11 | Citadel | Ubuntu Focal
-[galactic](https://github.com/chapulina/dolly/tree/galactic) | Galactic, Rolling | Gazebo 11 | Edifice, Fortress | Ubuntu Focal
+[galactic](https://github.com/chapulina/dolly/tree/galactic) | Galactic, Humble, Rolling | Gazebo 11 | Edifice, Fortress | Ubuntu Focal, Jammy
 
 ## Packages
 
@@ -61,7 +61,7 @@ supported ones:
 
 ### From source
 
-Install instructions for Ubuntu Bionic.
+Install instructions for Ubuntu Focal or higher.
 
 1. Install at least one simulator,
    [Gazebo](http://gazebosim.org/tutorials?cat=install) or
