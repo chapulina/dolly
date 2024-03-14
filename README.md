@@ -1,5 +1,6 @@
 [![Build and test](https://github.com/chapulina/dolly/actions/workflows/ci.yml/badge.svg)](https://github.com/chapulina/dolly/actions/workflows/ci.yml)
 
+test
 # Dolly the robot
 
 _It's a sheep, it's a dolly, it's a following robot. Born to be cloned._
